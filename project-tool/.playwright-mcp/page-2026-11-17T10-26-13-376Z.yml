@@ -1,0 +1,92 @@
+- generic [ref=e1]:
+  - generic [ref=e111]:
+    - complementary "Navigation drawer" [ref=e213]:
+      - button "Close navigation" [ref=e214]
+      - generic [ref=e218]:
+        - generic [ref=e219]: PM Suite
+        - button "Search… Ctrl K" [ref=e225]:
+          - generic [ref=e229]: Search…
+          - generic [ref=e230]: Ctrl K
+        - navigation "Main" [ref=e231]:
+          - list [ref=e232]:
+            - listitem [ref=e233]:
+              - link "Dashboard" [ref=e234] [cursor=pointer]:
+                - /url: /dashboard
+            - listitem [ref=e240]:
+              - link "Task Board" [ref=e241] [cursor=pointer]:
+                - /url: /tasks
+            - listitem [ref=e244]:
+              - link "Projects" [ref=e245] [cursor=pointer]:
+                - /url: /projects
+            - listitem [ref=e248]:
+              - link "Analytics" [ref=e249] [cursor=pointer]:
+                - /url: /analytics
+            - listitem [ref=e252]:
+              - link "Organization" [ref=e253] [cursor=pointer]:
+                - /url: /organization
+            - listitem [ref=e258]:
+              - link "Team & Invites" [ref=e259] [cursor=pointer]:
+                - /url: /organization/team
+          - generic [ref=e265]:
+            - paragraph [ref=e266]: Spaces
+            - list [ref=e267]:
+              - listitem [ref=e268]:
+                - button "General GEN" [ref=e269]:
+                  - generic [aria-hidden] [ref=e270]: G
+                  - generic [ref=e271]: General
+                  - generic [ref=e272]: GEN
+        - radiogroup "Theme" [ref=e274]:
+          - radio "Light" [ref=e275]
+          - radio "Dark" [ref=e282]
+          - radio "System" [checked] [ref=e285]
+    - generic [ref=e112]:
+      - banner [ref=e113]:
+        - button "Open navigation" [active] [ref=e114]
+        - generic [ref=e116]:
+          - button "Switch organization" [ref=e118]:
+            - generic [ref=e119]: Q
+            - generic [ref=e120]: QA Org
+          - generic [aria-hidden] [ref=e124]: /
+          - button "Switch space" [ref=e126]:
+            - generic [ref=e128]: All Spaces
+        - generic [ref=e132]:
+          - button "Open command palette" [ref=e133]
+          - button "Account" [ref=e138]:
+            - generic [aria-hidden] [ref=e139]: QU
+      - main [ref=e140]:
+        - generic [ref=e141]:
+          - generic [ref=e143]:
+            - heading "Good afternoon, qa.user" [level=1] [ref=e144]
+            - generic [ref=e145]: Here's what's happening in QA Org.
+          - generic [ref=e146]:
+            - generic [ref=e152]:
+              - paragraph [ref=e153]: Your role
+              - paragraph [ref=e154]: admin
+            - generic [ref=e162]:
+              - paragraph [ref=e163]: Members
+              - paragraph [ref=e164]: "1"
+            - generic [ref=e171]:
+              - paragraph [ref=e172]: Spaces
+              - paragraph [ref=e173]: "1"
+          - region "All spaces" [ref=e174]:
+            - heading "All spaces" [level=2] [ref=e176]
+            - list [ref=e177]:
+              - listitem [ref=e178]:
+                - button "General GEN General manager 1" [ref=e179]:
+                  - generic [ref=e181]:
+                    - generic [aria-hidden] [ref=e182]: GE
+                    - generic [ref=e183]:
+                      - paragraph [ref=e184]: General
+                      - paragraph [ref=e185]: GEN
+                  - generic [ref=e188]:
+                    - generic [ref=e189]: General
+                    - generic [ref=e190]: manager
+                    - generic [ref=e191]: "1"
+          - generic [ref=e198]:
+            - generic [ref=e205]:
+              - paragraph [ref=e206]: Bring your team in
+              - paragraph [ref=e207]: Invite people to QA Org and put them straight into a space.
+            - link "Invite people" [ref=e208] [cursor=pointer]:
+              - /url: /organization/team
+  - button "Open Next.js Dev Tools" [ref=e29] [cursor=pointer]
+  - alert [ref=e33]

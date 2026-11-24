@@ -1,0 +1,130 @@
+- generic [ref=e1]:
+  - generic [ref=e112]:
+    - banner [ref=e113]:
+      - button "Open navigation" [ref=e114]
+      - generic [ref=e116]:
+        - button "Switch organization" [ref=e118]:
+          - generic [ref=e119]: Q
+          - generic [ref=e120]: QA Org
+        - generic [aria-hidden] [ref=e124]: /
+        - button "Switch space" [ref=e126]:
+          - generic [ref=e128]: All Spaces
+      - generic [ref=e132]:
+        - button "Open command palette" [ref=e133]
+        - button "Account" [ref=e138]:
+          - generic [aria-hidden] [ref=e139]: QU
+    - main [ref=e140]:
+      - generic [ref=e417]:
+        - link "Projects" [ref=e418] [cursor=pointer]:
+          - /url: /projects
+        - generic [ref=e421]:
+          - generic [ref=e422]:
+            - generic [ref=e423]: QWR
+            - generic [ref=e424]:
+              - heading "QA Website Redesign" [level=1] [ref=e425]
+              - paragraph [ref=e426]: General space
+          - generic [ref=e427]:
+            - button "New task" [ref=e428]
+            - button "Edit" [ref=e430]
+            - button "Delete project" [ref=e434]
+        - tablist "Project sections" [ref=e438]:
+          - tab "Overview" [ref=e439]
+          - tab "Milestones 0" [ref=e440]:
+            - text: Milestones
+            - generic [ref=e441]: "0"
+          - tab "Tasks 1" [selected] [ref=e543]:
+            - text: Tasks
+            - generic [ref=e443]: "1"
+        - tabpanel "Tasks 1" [ref=e560]:
+          - generic [ref=e561]:
+            - combobox "Status group" [ref=e562]:
+              - option "Open tasks" [selected]
+              - option "All tasks"
+              - option "Backlog"
+              - option "To Do"
+              - option "In Progress"
+              - option "In Review"
+              - option "Completed"
+              - option "Cancelled"
+            - list [ref=e563]:
+              - listitem [ref=e564]:
+                - 'button "Priority: No priority QWR-1 Fix responsive header overflow To Do Assigned to qa.user" [ref=e565]':
+                  - generic "No priority" [ref=e566]: "Priority: No priority"
+                  - generic [ref=e569]: QWR-1
+                  - generic [ref=e570]: Fix responsive header overflow
+                  - generic [ref=e571]: To Do
+                  - img "Assigned to qa.user" [ref=e573]:
+                    - generic [aria-hidden] [ref=e574]: QU
+        - dialog "QWR-1 Fix responsive header overflow" [ref=e577]:
+          - generic [ref=e578]:
+            - generic [ref=e579]:
+              - generic [ref=e580]: QWR-1
+              - link "QA Website Redesign" [active] [ref=e581] [cursor=pointer]:
+                - /url: /projects/3
+            - button "Close" [ref=e587]
+          - generic [ref=e592]:
+            - generic [ref=e593]:
+              - textbox "Title" [ref=e594]: Fix responsive header overflow
+              - paragraph [ref=e595]: Created by qa.user just now
+            - generic [ref=e596]:
+              - generic [ref=e597]:
+                - generic [ref=e598]: Status
+                - combobox "Status" [ref=e602]:
+                  - option "Backlog"
+                  - option "To Do" [selected]
+                  - option "In Progress"
+                  - option "In Review"
+                  - option "Completed"
+                  - option "Cancelled"
+              - generic [ref=e603]:
+                - generic [ref=e604]: Priority
+                - combobox "Priority" [ref=e606]:
+                  - option "Urgent"
+                  - option "High"
+                  - option "Medium"
+                  - option "Low"
+                  - option "No priority" [selected]
+              - generic [ref=e607]:
+                - generic [ref=e608]: Assignees
+                - button "Assignees" [ref=e611]:
+                  - generic [ref=e612]:
+                    - generic [aria-hidden] [ref=e613]: QU
+                    - text: qa.user
+              - generic [ref=e614]:
+                - generic [ref=e615]: Tags
+                - button "Tags" [ref=e618]:
+                  - generic [ref=e619]: No tags
+              - generic [ref=e620]:
+                - generic [ref=e621]: Milestone
+                - combobox "Milestone" [ref=e623]:
+                  - option "None" [selected]
+              - generic [ref=e624]:
+                - generic [ref=e625]: Start date
+                - textbox "Start date" [ref=e627]
+              - generic [ref=e628]:
+                - generic [ref=e629]: Due date
+                - textbox "Due date" [ref=e631]
+            - generic [ref=e632]:
+              - text: Description
+              - textbox "Description" [ref=e633]:
+                - /placeholder: Add details, acceptance criteria, links…
+            - generic [ref=e634]:
+              - tablist "Task details" [ref=e635]:
+                - tab "Comments 0" [selected] [ref=e636]:
+                  - text: Comments
+                  - generic [ref=e637]: "0"
+                - tab "Files 0" [ref=e638]:
+                  - text: Files
+                  - generic [ref=e639]: "0"
+                - tab "Activity" [ref=e640]
+              - tabpanel "Comments 0" [ref=e641]:
+                - generic [ref=e642]:
+                  - paragraph [ref=e643]: No comments yet.
+                  - list
+                  - generic [ref=e644]:
+                    - textbox "New comment" [ref=e645]:
+                      - /placeholder: Write a comment… (Ctrl+Enter to send)
+                    - button "Send comment" [disabled] [ref=e646]
+            - button "Delete task" [ref=e651]
+  - button "Open Next.js Dev Tools" [ref=e29] [cursor=pointer]
+  - alert [ref=e33]: PM Suite

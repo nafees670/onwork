@@ -1,0 +1,21 @@
+- main [ref=e3]:
+  - generic [ref=e4]: PM Suite
+  - generic [ref=e8]:
+    - generic [ref=e9]:
+      - heading "Welcome back" [level=1] [ref=e10]
+      - paragraph [ref=e11]: Sign in to your workspace.
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - generic [ref=e14]: Email
+        - textbox "Email" [ref=e15]
+      - generic [ref=e16]:
+        - link "Forgot password?" [ref=e17] [cursor=pointer]:
+          - /url: /forgot-password
+        - generic [ref=e18]:
+          - generic [ref=e19]: Password
+          - textbox "Password" [ref=e20]
+      - button "Sign in" [ref=e21]
+    - paragraph [ref=e22]:
+      - text: New here?
+      - link "Create an account" [ref=e23] [cursor=pointer]:
+        - /url: /register?next=%2Fdashboard

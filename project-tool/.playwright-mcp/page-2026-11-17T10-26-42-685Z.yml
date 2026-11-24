@@ -1,0 +1,29 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e112]:
+    - banner [ref=e113]:
+      - button "Open navigation" [ref=e114]
+      - generic [ref=e116]:
+        - button "Switch organization" [ref=e118]:
+          - generic [ref=e119]: Q
+          - generic [ref=e120]: QA Org
+        - generic [aria-hidden] [ref=e124]: /
+        - button "Switch space" [ref=e126]:
+          - generic [ref=e128]: All Spaces
+      - generic [ref=e132]:
+        - button "Open command palette" [ref=e133]
+        - button "Account" [ref=e138]:
+          - generic [aria-hidden] [ref=e139]: QU
+    - main [ref=e140]:
+      - generic [ref=e308]:
+        - generic [ref=e309]:
+          - generic [ref=e310]:
+            - heading "Projects" [level=1] [ref=e311]
+            - generic [ref=e312]: Projects across all spaces
+          - button "New project" [ref=e314]
+        - generic [ref=e316]:
+          - generic [ref=e320]:
+            - paragraph [ref=e321]: No projects yet
+            - paragraph [ref=e322]: Projects group milestones and tasks. Create one to get started.
+          - button "New project" [ref=e323]
+  - button "Open Next.js Dev Tools" [ref=e29] [cursor=pointer]
+  - alert [ref=e33]

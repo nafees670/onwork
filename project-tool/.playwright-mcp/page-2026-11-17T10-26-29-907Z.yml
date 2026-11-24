@@ -1,0 +1,48 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e112]:
+    - banner [ref=e113]:
+      - button "Open navigation" [ref=e114]
+      - generic [ref=e116]:
+        - button "Switch organization" [ref=e118]:
+          - generic [ref=e119]: Q
+          - generic [ref=e120]: QA Org
+        - generic [aria-hidden] [ref=e124]: /
+        - button "Switch space" [ref=e126]:
+          - generic [ref=e128]: All Spaces
+      - generic [ref=e132]:
+        - button "Open command palette" [ref=e133]
+        - button "Account" [ref=e138]:
+          - generic [aria-hidden] [ref=e139]: QU
+    - main [ref=e140]:
+      - generic [ref=e288]:
+        - generic [ref=e290]:
+          - heading "Task Board" [level=1] [ref=e291]
+          - generic [ref=e292]: All spaces, grouped by status
+        - search "Filter tasks" [ref=e293]:
+          - textbox "Search tasks" [ref=e295]
+          - combobox "Project" [ref=e296]:
+            - option "All projects" [selected]
+          - combobox "Assignee" [ref=e297]:
+            - option "Anyone" [selected]
+            - option "Assigned to me"
+            - option "Unassigned"
+          - combobox "Priority" [ref=e298]:
+            - option "Any priority" [selected]
+            - option "Urgent"
+            - option "High"
+            - option "Medium"
+            - option "Low"
+            - option "No priority"
+          - combobox "Due date" [ref=e299]:
+            - option "Any due date" [selected]
+            - option "Overdue"
+            - option "Due in 7 days"
+            - option "No due date"
+        - generic [ref=e300]:
+          - generic [ref=e304]:
+            - paragraph [ref=e305]: No projects yet
+            - paragraph [ref=e306]: Tasks live in projects. Create a project in this space to start planning work.
+          - link "Go to projects" [ref=e307] [cursor=pointer]:
+            - /url: /projects
+  - button "Open Next.js Dev Tools" [ref=e29] [cursor=pointer]
+  - alert [ref=e33]

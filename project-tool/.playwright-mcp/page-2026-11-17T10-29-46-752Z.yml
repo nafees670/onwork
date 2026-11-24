@@ -1,0 +1,59 @@
+- generic [ref=e1]:
+  - generic [ref=e112]:
+    - banner [ref=e113]:
+      - button "Open navigation" [ref=e114]
+      - generic [ref=e116]:
+        - button "Switch organization" [ref=e118]:
+          - generic [ref=e119]: Q
+          - generic [ref=e120]: QA Org
+        - generic [aria-hidden] [ref=e124]: /
+        - button "Switch space" [ref=e126]:
+          - generic [ref=e128]: All Spaces
+      - generic [ref=e132]:
+        - button "Open command palette" [ref=e133]
+        - button "Account" [ref=e138]:
+          - generic [aria-hidden] [ref=e139]: QU
+    - main [ref=e140]:
+      - generic [ref=e417]:
+        - link "Projects" [ref=e418] [cursor=pointer]:
+          - /url: /projects
+        - generic [ref=e421]:
+          - generic [ref=e422]:
+            - generic [ref=e423]: QWR
+            - generic [ref=e424]:
+              - heading "QA Website Redesign" [level=1] [ref=e425]
+              - paragraph [ref=e426]: General space
+          - generic [ref=e427]:
+            - button "New task" [ref=e428]
+            - button "Edit" [ref=e430]
+            - button "Delete project" [ref=e434]
+        - tablist "Project sections" [ref=e438]:
+          - tab "Overview" [ref=e439]
+          - tab "Milestones 0" [ref=e440]:
+            - text: Milestones
+            - generic [ref=e441]: "0"
+          - tab "Tasks 1" [active] [selected] [ref=e543]:
+            - text: Tasks
+            - generic [ref=e443]: "1"
+        - tabpanel "Tasks 1" [ref=e560]:
+          - generic [ref=e561]:
+            - combobox "Status group" [ref=e562]:
+              - option "Open tasks" [selected]
+              - option "All tasks"
+              - option "Backlog"
+              - option "To Do"
+              - option "In Progress"
+              - option "In Review"
+              - option "Completed"
+              - option "Cancelled"
+            - list [ref=e563]:
+              - listitem [ref=e564]:
+                - 'button "Priority: No priority QWR-1 Fix responsive header overflow To Do Assigned to qa.user" [ref=e565]':
+                  - generic "No priority" [ref=e566]: "Priority: No priority"
+                  - generic [ref=e569]: QWR-1
+                  - generic [ref=e570]: Fix responsive header overflow
+                  - generic [ref=e571]: To Do
+                  - img "Assigned to qa.user" [ref=e573]:
+                    - generic [aria-hidden] [ref=e574]: QU
+  - button "Open Next.js Dev Tools" [ref=e29] [cursor=pointer]
+  - alert [ref=e33]: QA Website Redesign

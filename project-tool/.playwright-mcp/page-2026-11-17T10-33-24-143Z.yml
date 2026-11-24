@@ -1,0 +1,121 @@
+- generic [ref=f3e1]:
+  - generic [ref=f3e12]:
+    - generic [ref=f3e13]:
+      - banner [ref=f3e14]:
+        - button "Open navigation" [ref=f3e15]
+        - generic [ref=f3e17]:
+          - button "Switch organization" [ref=f3e19]:
+            - generic [ref=f3e20]: Q
+            - generic [ref=f3e21]: QA Org
+          - generic [aria-hidden] [ref=f3e25]: /
+          - button "Switch space" [ref=f3e27]:
+            - generic [ref=f3e29]: All Spaces
+        - generic [ref=f3e33]:
+          - button "Open command palette" [ref=f3e34]
+          - button "Account" [ref=f3e39]:
+            - generic [aria-hidden] [ref=f3e40]: QU
+      - main [ref=f3e41]:
+        - generic [ref=f3e42]:
+          - generic [ref=f3e44]:
+            - heading "Team & Invites" [level=1] [ref=f3e45]
+            - generic [ref=f3e46]: Invite people to QA Org and manage their roles.
+          - generic [ref=f3e47]:
+            - generic [ref=f3e48]:
+              - generic [ref=f3e50]:
+                - heading "Invite someone" [level=2] [ref=f3e51]
+                - paragraph [ref=f3e52]: They'll get an email with a link to join.
+              - generic [ref=f3e54]:
+                - status [ref=f3e116]:
+                  - generic [ref=f3e120]:
+                    - text: Invitation emailed to
+                    - strong [ref=f3e121]: teammate@example.com
+                    - text: ". You can also share this link (shown only once):"
+                    - generic [ref=f3e122]:
+                      - textbox "Invitation link" [ref=f3e123]: http://localhost:8088/invite/P7zFHz2jZhoWdfac4xOfbF-V5z_2a_Ts4dQqeq5Xxsc
+                      - button "Copy" [ref=f3e124]
+                - generic [ref=f3e55]:
+                  - generic [ref=f3e57]:
+                    - generic [ref=f3e58]: Email
+                    - textbox "Email" [ref=f3e59]:
+                      - /placeholder: teammate@company.com
+                  - generic [ref=f3e60]:
+                    - generic [ref=f3e61]: Organization role
+                    - combobox "Organization role" [ref=f3e63]:
+                      - option "Member" [selected]
+                      - option "Admin"
+                      - option "Guest (read only)"
+                  - generic [ref=f3e64]:
+                    - generic [ref=f3e65]: Add to space (optional)
+                    - combobox "Add to space (optional)" [ref=f3e67]:
+                      - option "No space yet" [selected]
+                      - option "General (GEN)"
+                  - button "Send invitation" [ref=f3e69]
+            - generic [ref=f3e70]:
+              - generic [ref=f3e72]:
+                - heading "Pending invitations" [level=2] [ref=f3e73]
+                - paragraph [ref=f3e74]: Links expire automatically; resend to get a fresh one.
+              - list [ref=f3e129]:
+                - listitem [ref=f3e130]:
+                  - generic [ref=f3e131]:
+                    - paragraph [ref=f3e132]: teammate@example.com
+                    - paragraph [ref=f3e133]:
+                      - generic [ref=f3e134]: MEMBER
+                      - text: Expires Nov 20, 2026, 3:32 PM
+                  - generic [ref=f3e135]:
+                    - button "Resend" [ref=f3e136]
+                    - button "Revoke" [ref=f3e137]
+          - generic [ref=f3e84]:
+            - generic [ref=f3e86]:
+              - heading "Members" [level=2] [ref=f3e87]
+              - paragraph [ref=f3e88]: Organization roles decide what people can see and change.
+            - generic [ref=f3e90]:
+              - searchbox "Search members" [ref=f3e91]
+              - list [ref=f3e92]:
+                - listitem [ref=f3e93]:
+                  - generic [ref=f3e94]:
+                    - generic [aria-hidden] [ref=f3e95]: QU
+                    - generic [ref=f3e96]:
+                      - paragraph [ref=f3e97]: qa.user (you)
+                      - paragraph [ref=f3e98]: qa.user@example.com
+                  - 'generic "General: MANAGER" [ref=f3e100]': GEN · manager
+                  - generic [ref=f3e101]:
+                    - combobox "Role for qa.user" [ref=f3e102]:
+                      - option "Admin" [selected]
+                      - option "Member"
+                      - option "Guest"
+                    - button "Spaces" [ref=f3e103]
+                    - button "Remove" [ref=f3e104]
+    - dialog "Command palette" [ref=f3e140]:
+      - generic [ref=f3e141]:
+        - combobox "Type a command or search…" [expanded] [active] [ref=f3e145]
+        - generic [ref=f3e146]: Esc
+      - listbox [ref=f3e147]:
+        - paragraph [ref=f3e148]: Go to
+        - option "Dashboard" [selected] [ref=f3e149] [cursor=pointer]
+        - option "Task Board" [ref=f3e156] [cursor=pointer]
+        - option "Projects" [ref=f3e160] [cursor=pointer]
+        - option "Analytics" [ref=f3e164] [cursor=pointer]
+        - option "Organization" [ref=f3e168] [cursor=pointer]
+        - option "Team & Invites" [ref=f3e174] [cursor=pointer]
+        - option "Create organization" [ref=f3e181] [cursor=pointer]
+        - paragraph [ref=f3e184]: Switch space
+        - option "All Spaces" [ref=f3e185] [cursor=pointer]
+        - option "General GEN" [ref=f3e191] [cursor=pointer]:
+          - generic [ref=f3e196]: General
+          - generic [ref=f3e197]: GEN
+        - paragraph [ref=f3e198]: Theme
+        - option "Light theme" [ref=f3e199] [cursor=pointer]
+        - option "Dark theme" [ref=f3e207] [cursor=pointer]
+        - option "System theme" [ref=f3e211] [cursor=pointer]
+        - paragraph [ref=f3e215]: Account
+        - option "Sign out" [ref=f3e216] [cursor=pointer]
+      - generic [ref=f3e221]:
+        - generic [ref=f3e222]:
+          - generic [ref=f3e223]: ↑
+          - generic [ref=f3e224]: ↓
+          - text: navigate
+        - generic [ref=f3e225]:
+          - generic [ref=f3e226]: ↵
+          - text: select
+  - button "Open Next.js Dev Tools" [ref=f3e110] [cursor=pointer]
+  - alert [ref=f3e114]

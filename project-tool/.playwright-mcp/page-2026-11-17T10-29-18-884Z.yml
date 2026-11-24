@@ -1,0 +1,132 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e112]:
+    - banner [ref=e113]:
+      - button "Open navigation" [ref=e114]
+      - generic [ref=e116]:
+        - button "Switch organization" [ref=e118]:
+          - generic [ref=e119]: Q
+          - generic [ref=e120]: QA Org
+        - generic [aria-hidden] [ref=e124]: /
+        - button "Switch space" [ref=e126]:
+          - generic [ref=e128]: All Spaces
+      - generic [ref=e132]:
+        - button "Open command palette" [ref=e133]
+        - button "Account" [ref=e138]:
+          - generic [aria-hidden] [ref=e139]: QU
+    - main [ref=e140]:
+      - generic [ref=e417]:
+        - link "Projects" [ref=e418] [cursor=pointer]:
+          - /url: /projects
+        - generic [ref=e421]:
+          - generic [ref=e422]:
+            - generic [ref=e423]: QWR
+            - generic [ref=e424]:
+              - heading "QA Website Redesign" [level=1] [ref=e425]
+              - paragraph [ref=e426]: General space
+          - generic [ref=e427]:
+            - button "New task" [ref=e428]
+            - button "Edit" [ref=e430]
+            - button "Delete project" [ref=e434]
+        - tablist "Project sections" [ref=e438]:
+          - tab "Overview" [selected] [ref=e439]
+          - tab "Milestones 0" [ref=e440]:
+            - text: Milestones
+            - generic [ref=e441]: "0"
+          - tab "Tasks 0" [ref=e442]:
+            - text: Tasks
+            - generic [ref=e443]: "0"
+        - tabpanel "Overview" [ref=e444]:
+          - generic [ref=e445]:
+            - generic [ref=e446]:
+              - generic [ref=e447]:
+                - heading "About" [level=2] [ref=e448]
+                - paragraph [ref=e449]: Frontend QA project
+                - generic [ref=e451]:
+                  - meter "QWR progress" [ref=e452]:
+                    - generic [ref=e456]: 0%
+                  - generic [ref=e457]:
+                    - paragraph [ref=e458]: 0 of 0 tasks done
+                    - paragraph [ref=e459]: Add milestones to track progress
+              - generic [ref=e460]:
+                - heading "Team" [level=2] [ref=e461]
+                - paragraph [ref=e462]: People with tasks in this project.
+                - paragraph [ref=e463]: Nobody is assigned yet.
+            - generic [ref=e464]:
+              - generic [ref=e466]:
+                - generic [ref=e467]:
+                  - term [ref=e468]: Status
+                  - definition [ref=e469]:
+                    - generic [ref=e470]: Active
+                - generic [ref=e471]:
+                  - term [ref=e472]: Space
+                  - definition [ref=e473]: GEN
+                - generic [ref=e474]:
+                  - term [ref=e475]: Lead
+                  - definition [ref=e476]: None
+                - generic [ref=e477]:
+                  - term [ref=e478]: Milestones
+                  - definition [ref=e479]: 0 · 0% allocated
+                - generic [ref=e480]:
+                  - term [ref=e481]: Start
+                  - definition [ref=e482]: —
+                - generic [ref=e483]:
+                  - term [ref=e484]: Target
+                  - definition [ref=e485]: —
+              - generic [ref=e486]:
+                - heading "Links" [level=2] [ref=e487]
+                - paragraph [ref=e488]: No links added.
+        - dialog "New task" [ref=e491]:
+          - generic [ref=e492]:
+            - heading "New task" [level=2] [ref=e493]
+            - button "Close" [ref=e494]
+          - generic [ref=e499]:
+            - generic [ref=e500]:
+              - generic [ref=e501]: Title
+              - textbox "Title" [invalid] [ref=e502]:
+                - /placeholder: What needs to be done?
+                - text: Fix responsive header overflow
+              - alert [ref=e528]: Enter a title.
+            - generic [ref=e503]:
+              - generic [ref=e504]: Project
+              - combobox "Project" [ref=e506]:
+                - option "Choose a project…"
+                - option "QWR · QA Website Redesign" [selected]
+            - generic [ref=e507]:
+              - generic [ref=e508]:
+                - generic [ref=e509]: Status
+                - combobox "Status" [ref=e511]:
+                  - option "Backlog"
+                  - option "To Do" [selected]
+                  - option "In Progress"
+                  - option "In Review"
+                  - option "Completed"
+                  - option "Cancelled"
+              - generic [ref=e512]:
+                - generic [ref=e513]: Priority
+                - combobox "Priority" [ref=e515]:
+                  - option "Urgent"
+                  - option "High"
+                  - option "Medium"
+                  - option "Low"
+                  - option "No priority" [selected]
+            - generic [ref=e516]:
+              - generic [ref=e517]: Assignees
+              - generic [ref=e519]:
+                - button "Assignees" [expanded] [ref=e520]:
+                  - generic [ref=e539]:
+                    - generic [aria-hidden] [ref=e540]: QU
+                    - text: qa.user
+                - generic [ref=e529]:
+                  - textbox "Search assignees" [ref=e534]:
+                    - /placeholder: Search…
+                  - listbox "Assignees" [ref=e535]:
+                    - option "qa.user" [selected] [ref=e536] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=e537]: QU
+            - generic [ref=e522]:
+              - generic [ref=e523]: Due date
+              - textbox "Due date" [ref=e524]
+          - generic [ref=e525]:
+            - button "Cancel" [ref=e526]
+            - button "Create task" [ref=e527]
+  - button "Open Next.js Dev Tools" [ref=e29] [cursor=pointer]
+  - alert [ref=e33]
