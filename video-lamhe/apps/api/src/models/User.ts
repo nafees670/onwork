@@ -5,9 +5,9 @@ const userSchema = new Schema(
   {
     name: { type: String, required: true, trim: true, maxlength: 80 },
     email: { type: String, required: true, unique: true, lowercase: true, trim: true },
-    /** Normalised '923xxxxxxxxx'. */
-    phone: { type: String, required: true },
+    phone: { type: String, default: null },
     passwordHash: { type: String, required: true, select: false },
+    googleId: { type: String, unique: true, sparse: true },
     avatarUrl: { type: String, default: null },
     role: { type: String, enum: ROLES, default: 'customer', index: true },
     isEmailVerified: { type: Boolean, default: false },
@@ -28,7 +28,7 @@ export function toPublicUser(u: UserDoc): PublicUser {
     id: u.id as string,
     name: u.name,
     email: u.email,
-    phone: u.phone,
+    phone: u.phone ?? '',
     role: u.role,
     avatarUrl: u.avatarUrl ?? null,
     themePreference: u.themePreference,

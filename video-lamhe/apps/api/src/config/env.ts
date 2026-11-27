@@ -53,6 +53,9 @@ export const envSchema = z
     ADMIN_EMAIL: optional(z.email()),
     REDIS_URL: optional(z.url()),
     SENTRY_DSN: optional(z.url()),
+    GOOGLE_CLIENT_ID: optional(z.string()),
+    GOOGLE_CLIENT_SECRET: optional(z.string()),
+    GOOGLE_REDIRECT_URI: optional(z.url()),
 
     ADMIN_WHATSAPP: z
       .string()

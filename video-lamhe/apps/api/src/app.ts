@@ -13,6 +13,7 @@ import { createErrorHandler, notFound } from './middleware/errorHandler.js';
 import { requestTimeout } from './middleware/timeout.js';
 import { LOGIN_LOCKOUT } from './config/rateLimits.js';
 import { createMemoryLockoutStore, type LockoutStore } from './lib/lockout.js';
+import { createGoogleAuth, type GoogleAuth } from './lib/google.js';
 import type { Mailer } from './lib/mailer.js';
 import type { MediaService } from './lib/media.js';
 import { createLimiters } from './middleware/rateLimit.js';
@@ -38,6 +39,7 @@ export interface AppDeps {
   media: MediaService;
   /** Defaults to an in-memory store (Phase 8: Redis). */
   lockout?: LockoutStore;
+  google?: GoogleAuth;
 }
 
 export function createApp({
@@ -47,6 +49,7 @@ export function createApp({
   mailer,
   media,
   lockout,
+  google,
 }: AppDeps): Express {
   const app = express();
   const isProduction = env.NODE_ENV === 'production';
@@ -111,7 +114,15 @@ export function createApp({
   const lockoutStore = lockout ?? createMemoryLockoutStore(LOGIN_LOCKOUT);
   app.use(
     `${API_PREFIX}/auth`,
-    authRouter({ env, logger, mailer, media, lockout: lockoutStore, limiters }),
+    authRouter({
+      env,
+      logger,
+      mailer,
+      media,
+      lockout: lockoutStore,
+      limiters,
+      google: google ?? createGoogleAuth(env),
+    }),
   );
   app.use(`${API_PREFIX}/contact`, contactRouter({ env, limiters }));
   app.use(`${API_PREFIX}/settings`, settingsRouter({ env }));

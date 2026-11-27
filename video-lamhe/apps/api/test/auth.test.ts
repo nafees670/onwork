@@ -117,6 +117,34 @@ describe('login, me & logout', () => {
     expect((await request(app).post(`${A}/refresh`).set('Cookie', cookie)).status).toBe(401);
   });
 
+  it('emails the user on a successful login, not on a failed one', async () => {
+    const app = buildTestApp();
+    await register(app);
+    expect(app.sentMail).toHaveLength(0);
+
+    const bad = await request(app)
+      .post(`${A}/login`)
+      .send({ email: customer.email, password: 'wrong' });
+    expect(bad.status).toBe(401);
+    expect(app.sentMail).toHaveLength(0);
+
+    const ok = await request(app)
+      .post(`${A}/login`)
+      .set('User-Agent', 'test-agent')
+      .set('X-Forwarded-For', '10.1.2.3')
+      .send({ email: customer.email, password: customer.password });
+    expect(ok.status).toBe(200);
+    expect(app.sentMail).toHaveLength(1);
+    expect(app.sentMail[0]).toMatchObject({
+      to: 'customer@example.com',
+      subject: 'New sign-in to your Video Lamhe account',
+    });
+    expect(app.sentMail[0]!.text).toContain('10.1.2.3');
+    expect(app.sentMail[0]!.text).toContain('test-agent');
+    expect(app.sentMail[0]!.text).toContain('http://localhost:3000/reset-password');
+    expect(app.sentMail[0]!.text).not.toContain(customer.password);
+  });
+
   it('locks the account for 15 min after 5 failed logins for the same email (any IP)', async () => {
     const app = buildTestApp();
     await register(app);

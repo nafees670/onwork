@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import type { z } from 'zod';
 import { registerSchema } from '@video-lamhe/shared';
+import { GoogleButton } from '@/components/auth/google-button';
 import { Button, FormAlert, Input } from '@/components/ui';
 import { register as registerUser } from '@/lib/api/auth';
 import { applyServerError } from '@/lib/forms';
@@ -66,6 +67,12 @@ export function RegisterForm({ onSuccess }: { onSuccess: () => void }) {
       <Button type="submit" size="lg" loading={isSubmitting} className="mt-2">
         Create account
       </Button>
+      <div className="flex items-center gap-3 text-xs text-muted">
+        <span className="h-px flex-1 bg-line" />
+        or
+        <span className="h-px flex-1 bg-line" />
+      </div>
+      <GoogleButton />
       {/* TODO(Phase 9): link to /terms and /privacy once the static pages exist. */}
       <p className="text-center text-xs text-muted">
         By creating an account you agree to our Terms and Privacy Policy.

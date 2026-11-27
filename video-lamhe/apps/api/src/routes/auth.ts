@@ -1,3 +1,4 @@
+import { randomBytes } from 'node:crypto';
 import { Router, type RequestHandler } from 'express';
 import {
   forgotPasswordSchema,
@@ -10,10 +11,12 @@ import {
   type AuthResult,
   type PublicUser,
 } from '@video-lamhe/shared';
-import type { z } from 'zod';
+import { z } from 'zod';
+import { API_PREFIX } from '../config/constants.js';
 import type { Env } from '../config/env.js';
 import { asyncHandler } from '../lib/asyncHandler.js';
 import { AppError } from '../lib/errors.js';
+import { GOOGLE_STATE_COOKIE, GOOGLE_STATE_TTL_MS, type GoogleAuth } from '../lib/google.js';
 import type { LockoutStore } from '../lib/lockout.js';
 import type { Logger } from 'pino';
 import type { Mailer } from '../lib/mailer.js';
@@ -39,6 +42,7 @@ export interface AuthRouterDeps {
   media: MediaService;
   lockout: LockoutStore;
   limiters: Limiters;
+  google: GoogleAuth;
 }
 
 /** Cookie-authenticated endpoints: reject cross-origin browser requests (defence in depth on top of SameSite=Strict). */
@@ -58,6 +62,7 @@ export function authRouter({
   media,
   lockout,
   limiters,
+  google,
 }: AuthRouterDeps): Router {
   const router = Router();
   const auth = requireAuth(env);
@@ -106,6 +111,100 @@ export function authRouter({
     }),
   );
 
+  router.get('/google', (_req, res) => {
+    const web = env.WEB_URL[0] ?? '';
+    if (!google.configured) {
+      res.clearCookie(GOOGLE_STATE_COOKIE, { path: `${API_PREFIX}/auth/google` });
+      res.redirect(`${web}/login?googleError=NOT_CONFIGURED`);
+      return;
+    }
+    const state = randomBytes(32).toString('base64url');
+    res.cookie(GOOGLE_STATE_COOKIE, state, {
+      httpOnly: true,
+      secure: env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      path: `${API_PREFIX}/auth/google`,
+      maxAge: GOOGLE_STATE_TTL_MS,
+    });
+    res.redirect(google.authorizationUrl(state));
+  });
+
+  router.get(
+    '/google/callback',
+    validate({
+      query: z.object({
+        code: z.string().optional(),
+        state: z.string().optional(),
+        error: z.string().optional(),
+      }),
+    }),
+    asyncHandler(async (req, res) => {
+      const web = env.WEB_URL[0] ?? '';
+      const { code, state, error } = req.query as {
+        code?: string;
+        state?: string;
+        error?: string;
+      };
+      const clearState = () =>
+        res.clearCookie(GOOGLE_STATE_COOKIE, { path: `${API_PREFIX}/auth/google` });
+      const fail = (reason: string) => {
+        clearState();
+        res.redirect(`${web}/login?googleError=${encodeURIComponent(reason)}`);
+      };
+
+      const expected = req.cookies?.[GOOGLE_STATE_COOKIE];
+      if (
+        !state ||
+        typeof expected !== 'string' ||
+        state.length !== expected.length ||
+        state !== expected
+      ) {
+        fail('INVALID_STATE');
+        return;
+      }
+      if (error || !code) {
+        fail(error === 'access_denied' ? 'GOOGLE_DENIED' : 'GOOGLE_FAILED');
+        return;
+      }
+
+      try {
+        const profile = await google.exchangeCode(code);
+        if (!profile.emailVerified) {
+          fail('EMAIL_NOT_VERIFIED');
+          return;
+        }
+        let user = await User.findOne({ email: profile.email }).select('+passwordHash');
+        if (user && user.googleId && user.googleId !== profile.sub) {
+          fail('ACCOUNT_CONFLICT');
+          return;
+        }
+        if (!user) {
+          user = await User.create({
+            name: profile.name,
+            email: profile.email,
+            googleId: profile.sub,
+            passwordHash: await hashPassword(
+              randomBytes(32).toString('base64url'),
+              env.BCRYPT_ROUNDS,
+            ),
+            isEmailVerified: true,
+            role: 'customer',
+          });
+        } else {
+          user.googleId = profile.sub;
+          user.isEmailVerified = true;
+          await user.save();
+        }
+        clearState();
+        await issueSession(env, req, res, user);
+        res.redirect(web || '/');
+      } catch (err) {
+        logger.error({ err }, 'Google sign-in failed');
+        fail('GOOGLE_FAILED');
+      }
+    }),
+  );
+
   router.post(
     '/login',
     validate({ body: loginSchema }),
@@ -144,6 +243,21 @@ export function authRouter({
 
       await lockout.reset(email);
       const result = await issueSession(env, req, res, user);
+      void mailer
+        .send({
+          to: user.email,
+          subject: 'New sign-in to your Video Lamhe account',
+          text:
+            `Assalam o Alaikum ${user.name},\n\n` +
+            `We noticed a new sign-in to your account at ${new Date().toISOString()}.\n` +
+            `IP: ${req.ip ?? 'unknown'}\n` +
+            `Device: ${req.get('user-agent')?.slice(0, 300) ?? 'unknown'}\n\n` +
+            `If this was you, no action is needed. If not, reset your password here: ` +
+            `${env.WEB_URL[0]}/reset-password\n\n— Video Lamhe`,
+        })
+        .catch((err: unknown) =>
+          logger.error({ err, email: user.email }, 'Could not send login alert'),
+        );
       res.json({ data: result } satisfies ApiSuccess<AuthResult>);
     }),
   );
